@@ -6,8 +6,11 @@ import java.util.Scanner;
 public class BankingApplication {
 
     public static void main(String[] args){
-        BankAccount c1 = new BankAccount("Francis", "104582861");
+        BankAccount c1 = new BankAccount("Christine", "104582861");
         c1.showMenu();
+
+        BankAccount c2 = new BankAccount("Francis", "999999999");
+        c2.showMenu();
     }
 }
 
@@ -37,12 +40,12 @@ class BankAccount {
     }
 
     void getPreviousTransaction(){
-        if(previousTransaction < 0){
+        if(previousTransaction > 0){
             System.out.println("Deposited: " + previousTransaction);
         } else if (previousTransaction < 0) {
             System.out.println("Withdrawn: " + Math.abs(previousTransaction));
         } else {
-            System.out.println("No transaction occured");
+            System.out.println("No transaction happened");
         }
     }
 
@@ -50,8 +53,8 @@ class BankAccount {
         char option = '\0';
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome " + customerName);
-        System.out.println("Your ID is " + customerId);
+        System.out.println("Welcome " + customerName + "!");
+        System.out.println("Your ID is " + customerId + ".");
         System.out.println("\n");
         System.out.println("A. Check Balance");
         System.out.println("B. Deposit");
@@ -65,14 +68,14 @@ class BankAccount {
             System.out.println("=============================================");
             option = scanner.next().charAt(0);
             option = Character.toUpperCase(option);
-            System.out.println("\n");
+            System.out.println("");
 
             switch(option){
                 case 'A':
                     System.out.println("----------------------------------------------");
                     System.out.println("Balance = " + balance);
                     System.out.println("----------------------------------------------");
-                    System.out.println('\n');
+                    System.out.println();
                     break;
 
                 case 'B':
@@ -81,7 +84,7 @@ class BankAccount {
                     System.out.println("----------------------------------------------");
                     int amount = scanner.nextInt();
                     deposit(amount);
-                    System.out.println("\n");
+                    System.out.println();
                     break;
 
                 case 'C':
@@ -90,13 +93,15 @@ class BankAccount {
                     System.out.println("----------------------------------------------");
                     int amountOut = scanner.nextInt();
                     withdraw(amountOut);
-                    System.out.println("\n");
+                    System.out.println();
                     break;
 
                 case 'D':
                     System.out.println("----------------------------------------------");
                     getPreviousTransaction();
                     System.out.println("----------------------------------------------");
+                    System.out.println();
+                    break;
 
                 case 'E':
                     System.out.println("**********************************************");
@@ -108,6 +113,8 @@ class BankAccount {
             }
 
         }while(option != 'E');
-        System.out.println("Thank you for using our services");
+        System.out.println("Thank you for using our services!");
+        System.out.println("**********************************************");
+        System.out.println();
     }
 }
